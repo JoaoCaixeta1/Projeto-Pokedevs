@@ -1,0 +1,192 @@
+body{
+    font-family: "Poppins", sans-serif;
+    background-image: url("../images/background.png");
+    background-size: cover;
+}
+/* 
+Sans-serif vai servir para caso dê algum problema para ler Poppins, o código vai procurar qualquer outra fonte presente para não deixar em branco cover serve para cobrir a página inteira
+*/
+
+body::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    backdrop-filter: blur(8px);
+}
+/* 
+É um pseudo elemento. content: ""; é uma estrutura de conteúdo que não recebe nada. position: fixed; é um objeto com posição fixa. top: 0; left: 0; ele vai ficar grudado no topo e na esquerda. widht: 100%; height: 100%; vai ser 100% de largura e altura que ele vai preencher, além de ficar fixo. o eixo Z de um plano mexe com a profundidade, o -1 vai jogar o objeto mais pra baixo no eixo Z. backdrop-filter: blur(8px)*; vai dar um desfoque no background da página de 8px. 
+*/
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+/* 
+display: flex; é para centralizar os objetos da imagem por automático.
+justify-content: center; está centralizando os objetos. Assim como align-items: center;Enquanto o min-height: 100vh; serve para dar uma distância mínima para que a imagem consiga se movimentar direito. (vh = view porthight, ou seja, quer que ocupe toda a altura disponível na janela do navegador).
+*/
+
+.pokedevs{
+    display: flex;
+    gap: 30px;
+    padding: 30px 0;
+}
+
+.cartao-pokedev{
+    display: none;
+    max-width: 360px;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+/* 
+display: none; está escondendo todo o display (cartao-pokedev)
+max-width: 360px; está dizendo que a imagem pode chegar até no máximo 360px 
+*/
+
+.cartao-pokedev.aberto{
+    display: block;
+}
+/* 
+display: block; está cancelando o display: none; do cartao-pokedev específico, que no caso é o .aberto (que só inclui o devchu). Isso para considerar que ele seja o cartao padrão na hora de recarregar a página. 
+*/
+
+.cartao-pokedev img{
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+}
+/* 
+Estamos editando a imagem do cartao-pokedev, mostrando que o widht e height pode chegar ao 100% de tamanho permitido (que eu delimitei como 360px) e o margin-top: 10px; está jogando a imagem 10px pra baixo da margem padrão. 
+*/
+
+.cartao-pokedev .cartao-topo{
+    padding: 30px 40px 0;
+}
+/* 
+padding: 30px; está dando espaçamento de 30px em cima, 40px dos lados e 0 embaixo.
+*/
+
+.cartao-pokedev .nome{
+    margin-bottom: 5px;
+}
+/* 
+margin-bottom: 5px; dando um espaçamento do nome embaixo. 
+*/
+
+.cartao-pokedev .tipo{
+    background-color: #ffffff;
+    font-size: 12px;
+    opacity: 0.7;
+    border-radius: 10px;
+    padding: 2px 10px;
+}
+/* 
+font-size: 12px; vai regular o tamanho da fonte do texto. opacity: 0.7; é o nível de translúcido que vai deixar. border-radius: 10px; é a borda arredondada. padding:2px 10px pra dar espaçamento de 2px em cima e embaixo e 10px na direita e esquerda. 
+*/
+
+.cartao-pokedev .detalhes{
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartao-pokedev .cartao-informacoes{
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 30px 50px;
+    margin-top: -70px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+/* Criando um background para a descrição onde o margin-top: -70px; serve para fazer o contrário do que se pede, onde "top" é de cima para baixo e o -70 vai colocar debaixo para cima, dando o efeito do pokemon estar em cima da descrição. 
+*/
+
+.cartao-pokedev .cartao-informacoes h3{
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #6b727a;
+}
+
+.cartao-pokedev .cartao-informacoes .descricao{
+    padding: 0 10px;
+    font-size: 15px;
+    max-height: 150px;
+    overflow-y: scroll;
+}
+/* 
+O max-height: 150px; serve para diminuir o Flexbox e deixar o texto vazar para baixo, para que adicione um scroll depois. overflow-y: scroll; adiciona um scroll na descrição.
+*/ 
+
+.tipo-eletrico{
+    background-color: #fcc719;
+}
+
+.tipo-fogo{
+    background-color: #f15000d2;
+}
+
+.tipo-agua{
+    background-color: #015c98;
+}
+
+.tipo-trevas{
+    background-color: #BA86C8;
+}
+
+.tipo-fada{
+    background-color: #C29791;
+}
+/* 
+É a cor do plano de fundo de cada tipo de Pokemon.
+*/
+
+.listagem{
+    max-width: 200px;
+}
+
+.listagem .pokedev img{
+    width: 25%;
+}
+
+.listagem .pokedev{
+    background-color: #6b727a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    min-height: 70px;
+    transition: 0.15 ease-in-out;
+
+}
+/*
+cursor: pointer; é utilizado para quando passar com o mouse por cima do pokemon, mostrar que é "clicavel". min-height: 70px; meio que da um mini zoom quando passa o mouse por cima.
+transition: 0.15 ease-in-out; é uma leve transição para o zoom, para n ficar muito direto e deixar mais suave a animação.
+*/
+
+.listagem .pokedev:hover {
+    transform: scale(1.1);
+}
+/*
+:hover serve para quando passar o mouse em cima, ter alguma ação, no caso é para dar zoom e animar. transfor: scale(1); é a escala de zoom que vai ser dado.
+*/
+
+.listagem .pokedev span{
+    padding-right: 20px;
+}
+
+.listagem .pokedev.ativo{
+    background-color: #fa6668;
+}
